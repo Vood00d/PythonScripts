@@ -39,17 +39,20 @@ def renameparfiles(partuples, folderpath):
                 os.rename(folderpath + "\\" + partuple[2], folderpath + "\\" + partuple[0] + "_" + partuple[1] + ".par")
             
 def main():
-    parfilenames = getfilenames(sys.argv[1])
+    if len(sys.argv[1]) == 2:
+        parfilenames = getfilenames(sys.argv[1])
     
-    legendpar = ''
-    for parfile in parfilenames:
-        if parfile.endswith('.par'):
-            legendpar = sys.argv[1] + "\\" + parfile    
+        legendpar = ''
+        for parfile in parfilenames:
+            if parfile.endswith('.par'):
+                legendpar = sys.argv[1] + "\\" + parfile    
 
-    # print(legendpar)
+        # print(legendpar)
     
-    partuples = getpardict(legendpar)   
-    renameparfiles(partuples, sys.argv[1])       
+        partuples = getpardict(legendpar)   
+        renameparfiles(partuples, sys.argv[1])       
+    else:
+        prin('need folder path')
 
 if __name__ == '__main__':
     main()
